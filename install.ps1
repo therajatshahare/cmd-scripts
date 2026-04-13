@@ -136,7 +136,7 @@ function folders  { & "`$scriptDir\folders.ps1" @args }
 function insta    { & "`$scriptDir\insta.ps1" @args }
 
 function toolkit-version {
-    Write-Host "Cmd-Scripts Version: 1.0.0"
+    Write-Host "Cmd-Scripts Version: `$toolkitVersion"
 }
 
 function update-scripts {
