@@ -83,6 +83,25 @@ update-scripts
 
 ---
 
+### 📖 Help System
+
+Get help directly in terminal:
+
+```powershell
+toolkit-help
+```
+
+Command-specific help:
+
+```powershell
+toolkit-help ytvideo
+toolkit-help insta
+toolkit-help exifpic
+toolkit-help "script names"
+```
+
+---
+
 ## 🎵 Lyrics Setup (Required for showlyrics)
 
 ```powershell
@@ -114,6 +133,7 @@ cmd-scripts/
     ├── exifpic.ps1
     ├── folders.ps1
     ├── insta.ps1
+    ├── toolkit-help.ps1
     └── lyrics.py
 ```
 
