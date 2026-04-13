@@ -67,7 +67,7 @@ if ($answer -ne "y") {
 Write-Host "Fetching lyrics for: $title"
 
 # Run your Python script
-$scriptPath = "C:\Windows\cmd-scripts\lyrics.py"
+$scriptPath = "$PSScriptRoot\lyrics.py"
 python "$scriptPath" "$title" "$($latest.FullName)"
 
 Write-Host "Lyrics embedded into $($latest.Name)"
