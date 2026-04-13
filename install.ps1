@@ -20,7 +20,7 @@ $targetDir = "C:\Windows\cmd-scripts"
 $profileDir = "$HOME\Documents\PowerShell"
 $profilePath = "$profileDir\Microsoft.PowerShell_profile.ps1"
 
-# Script list (FULL TOOLSET)
+# Script list
 $scripts = @(
     "ytvideo.ps1",
     "vytvideo.ps1",
@@ -102,7 +102,7 @@ if (!(Test-Path $profileDir)) {
 }
 
 # -------------------------------
-# PROFILE SETUP (UPDATED)
+# PROFILE SETUP (SMART)
 # -------------------------------
 Write-Host "`nConfiguring PowerShell profile..." -ForegroundColor Cyan
 
@@ -140,17 +140,22 @@ function update-scripts {
 "@
 
 if (Test-Path $profilePath) {
-    $existing = Get-Content $profilePath -Raw
-    if ($existing -notmatch "Cmd-Scripts Setup") {
-        Add-Content -Path $profilePath -Value "`n$profileBlock"
-        Write-Host "Profile updated"
-    } else {
-        Write-Host "Profile already configured"
-    }
-} else {
-    Set-Content -Path $profilePath -Value $profileBlock
-    Write-Host "Profile created"
+    $content = Get-Content $profilePath -Raw
+
+    # Remove old block
+    $content = $content -replace '(?s)# ===== Cmd-Scripts Setup =====.*?# ===== End Cmd-Scripts =====', ''
+
+    Set-Content -Path $profilePath -Value $content
 }
+
+# Add fresh block
+Add-Content -Path $profilePath -Value "`n$profileBlock"
+
+Write-Host "Profile refreshed"
+
+# Reload profile instantly
+. $PROFILE
+Write-Host "Profile loaded" -ForegroundColor Green
 
 # -------------------------------
 # EXECUTION POLICY
