@@ -63,8 +63,8 @@ exifpic
 ### ⚡ System Utilities
 
 ```powershell
-update-tools
-upgrade-tools
+update
+upgrade
 aria
 ```
 
