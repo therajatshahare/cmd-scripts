@@ -147,11 +147,7 @@ if (!(Test-Path `$scriptDir)) {
     Write-Host "Warning: Script directory not found: `$scriptDir" -ForegroundColor Red
 }
 
-# -------------------------------
-
 # AUTO DISCOVERY (PS1)
-
-# -------------------------------
 
 Get-ChildItem "`$scriptDir\*.ps1" -File | ForEach-Object {
     `$name = [System.IO.Path]::GetFileNameWithoutExtension(`$_.Name)
@@ -165,11 +161,7 @@ Set-Item -Path "function:`$name" -Value {
 
 }
 
-# -------------------------------
-
 # AUTO DISCOVERY (PYTHON)
-
-# -------------------------------
 
 Get-ChildItem "`$scriptDir\*.py" -File | ForEach-Object {
     `$name = [System.IO.Path]::GetFileNameWithoutExtension(`$_.Name)
@@ -183,11 +175,7 @@ Set-Item -Path "function:`$name" -Value {
 
 }
 
-# -------------------------------
-
 # CUSTOM COMMAND (KEEP)
-
-# -------------------------------
 
 function insta {
 param(
@@ -203,11 +191,7 @@ param(
 
 }
 
-# -------------------------------
-
 # TOOLKIT COMMANDS
-
-# -------------------------------
 
 function toolkit-version {
 Write-Host "Cmd-Scripts Version: $($toolkitVersion)"
