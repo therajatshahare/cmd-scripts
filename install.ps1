@@ -20,7 +20,7 @@ $baseRaw = "https://raw.githubusercontent.com/$repoUser/$repoName/$branch"
 # Target paths
 $targetDir = "C:\Windows\cmd-scripts"
 $profileDir = "$HOME\Documents\PowerShell"
-$profilePath = "$profileDir\Microsoft.PowerShell_profile.ps1"
+$profilePath = $PROFILE
 
 # Script list
 $scripts = @(
