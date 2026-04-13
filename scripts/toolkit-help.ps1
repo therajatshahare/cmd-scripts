@@ -133,12 +133,13 @@ switch ($Command.ToLower()) {
     }
 
     "showformat" {
-        Write-Host "showformat ""file/url""" -ForegroundColor Cyan
-        Write-Host "Display format and stream details"
+        Write-Host "showformat ""url""" -ForegroundColor Cyan
+        Write-Host "Display format and stream details (YouTube/online sources)"
         Write-Host ""
         Write-Host "Examples:"
-        Write-Host "  showformat ""video.mkv"""
         Write-Host "  showformat ""https://youtu.be/..."""
+        Write-Host "  Only supports URLs (Not the local files)"
+        Write-Host "  For local files use showmeta"
     }
 
     "showlyrics" {
