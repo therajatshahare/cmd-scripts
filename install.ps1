@@ -147,7 +147,6 @@ function update-scripts {
 function toolkit-help {
     & "$scriptDir\toolkit-help.ps1" @args
 }
-
 # ===== End Cmd-Scripts =====
 "@
 
