@@ -177,8 +177,8 @@ Install-IfMissing "aria2c" "aria2.aria2"
 Install-IfMissing "python" "Python.Python.3"
 
 # Python packages
-python -m pip install --upgrade pip -ErrorAction SilentlyContinue
-python -m pip install lyricsgenius -ErrorAction SilentlyContinue
+try { python -m pip install --upgrade pip } catch {}
+try { python -m pip install lyricsgenius } catch {}
 
 # -------------------------------
 # DONE
