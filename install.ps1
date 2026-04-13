@@ -179,23 +179,29 @@ function toolkit-help {
 # ===== End Cmd-Scripts =====
 "@
 
-if (Test-Path $profilePath) {
-    $content = Get-Content $profilePath -Raw
-
-    # Remove old block
-    $content = $content -replace '(?s)# ===== Cmd-Scripts Setup =====.*?# ===== End Cmd-Scripts =====', ''
-
-    Set-Content -Path $profilePath -Value $content
+# Ensure profile file exists
+if (!(Test-Path $profilePath)) {
+    New-Item -ItemType File -Path $profilePath -Force | Out-Null
 }
 
-# Add fresh block
-Add-Content -Path $profilePath -Value "`n$profileBlock"
+# Read safely
+$content = ""
+try {
+    $content = Get-Content $profilePath -Raw
+} catch {}
 
-Write-Host "Profile refreshed"
+# Remove old block if exists
+$content = $content -replace '(?s)# ===== Cmd-Scripts Setup =====.*?# ===== End Cmd-Scripts =====', ''
 
-# Reload profile instantly
+# Write everything cleanly (CRITICAL FIX)
+$newContent = $content.Trim() + "`n`n" + $profileBlock
+
+Set-Content -Path $profilePath -Value $newContent -Encoding UTF8
+
+Write-Host "Profile updated successfully" -ForegroundColor Green
+
+# Reload profile
 . $PROFILE
-Write-Host "Profile loaded" -ForegroundColor Green
 
 # -------------------------------
 # EXECUTION POLICY
