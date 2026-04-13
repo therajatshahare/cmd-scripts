@@ -38,7 +38,8 @@ $scripts = @(
     "exifpic.ps1",
     "folders.ps1",
     "insta.ps1",
-    "lyrics.py"
+    "lyrics.py",
+    "toolkit-help.ps1"
 )
 
 # -------------------------------
@@ -144,39 +145,7 @@ function update-scripts {
 }
 
 function toolkit-help {
-    Write-Host ""
-    Write-Host "=== Cmd-Scripts Toolkit Help ===" -ForegroundColor Cyan
-
-    Write-Host "`n🎥 Media Commands" -ForegroundColor Yellow
-    Write-Host "  ytvideo    → Download YouTube video"
-    Write-Host "  vytvideo   → Download vertical video"
-    Write-Host "  ytaudio    → Extract audio"
-
-    Write-Host "`n🎵 Metadata & Lyrics" -ForegroundColor Yellow
-    Write-Host "  showmeta     → Show media metadata"
-    Write-Host "  showformat   → Show format details"
-    Write-Host "  showlyrics   → Fetch & embed lyrics"
-
-    Write-Host "`n📁 File Utilities" -ForegroundColor Yellow
-    Write-Host "  folders   → List folders"
-    Write-Host "  hide      → Hide file"
-    Write-Host "  unhide    → Unhide file"
-    Write-Host "  exifpic   → Modify EXIF metadata"
-
-    Write-Host "`n⚡ System Tools" -ForegroundColor Yellow
-    Write-Host "  update    → Update Winget/Scoop"
-    Write-Host "  upgrade   → Full upgrade"
-    Write-Host "  aria      → aria2 downloader"
-
-    Write-Host "`n📸 Instagram" -ForegroundColor Yellow
-    Write-Host "  insta <user> [full|update]"
-
-    Write-Host "`n🔁 Toolkit" -ForegroundColor Yellow
-    Write-Host "  update-scripts   → Update toolkit"
-    Write-Host "  toolkit-version  → Show version"
-
-    Write-Host ""
-    Write-Host "Tip: Use commands directly from any folder" -ForegroundColor DarkGray
+    & "$scriptDir\toolkit-help.ps1" @args
 }
 
 # ===== End Cmd-Scripts =====
