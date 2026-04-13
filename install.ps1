@@ -1,3 +1,5 @@
+$toolkitVersion = "1.0.0"
+Write-Host "Cmd-Scripts Version: $toolkitVersion"
 # ================================
 # Personal Cmd-Scripts Installer
 # ================================
@@ -132,6 +134,10 @@ function aria     { & "`$scriptDir\aria.ps1" @args }
 function exifpic  { & "`$scriptDir\exifpic.ps1" @args }
 function folders  { & "`$scriptDir\folders.ps1" @args }
 function insta    { & "`$scriptDir\insta.ps1" @args }
+
+function toolkit-version {
+    Write-Host "Cmd-Scripts Version: 1.0.0"
+}
 
 function update-scripts {
     irm $baseRaw/install.ps1 | iex
