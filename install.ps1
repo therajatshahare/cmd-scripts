@@ -102,13 +102,17 @@ if (!(Test-Path $profileDir)) {
 }
 
 # -------------------------------
-# PROFILE SETUP
+# PROFILE SETUP (UPDATED)
 # -------------------------------
 Write-Host "`nConfiguring PowerShell profile..." -ForegroundColor Cyan
 
 $profileBlock = @"
 # ===== Cmd-Scripts Setup =====
-`$scriptDir = "$targetDir"
+`$scriptDir = "`$HOME\cmd-scripts"
+
+if (!(Test-Path `$scriptDir)) {
+    Write-Host "Warning: Script directory not found: `$scriptDir" -ForegroundColor Red
+}
 
 function ytvideo   { & "`$scriptDir\ytvideo.ps1" @args }
 function vytvideo  { & "`$scriptDir\vytvideo.ps1" @args }
@@ -129,7 +133,6 @@ function exifpic  { & "`$scriptDir\exifpic.ps1" @args }
 function folders  { & "`$scriptDir\folders.ps1" @args }
 function insta    { & "`$scriptDir\insta.ps1" @args }
 
-# Self-update command
 function update-scripts {
     irm $baseRaw/install.ps1 | iex
 }
