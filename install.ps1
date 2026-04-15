@@ -12,7 +12,7 @@ Write-Host "=== Cmd-Scripts Setup Starting ===" -ForegroundColor Cyan
 # CONFIG
 # -------------------------------
 $repoUser = "therajatshahare"
-$repoName = "cmd-scripts"
+$repoName = "ps1-scripts-win"
 $branch   = "main"
 
 $baseRaw = "https://raw.githubusercontent.com/$repoUser/$repoName/$branch"
