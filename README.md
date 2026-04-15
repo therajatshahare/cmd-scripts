@@ -7,7 +7,7 @@ A personal **PowerShell CLI toolkit** for everyday automation, media handling, a
 ## 🚀 One-Line Install
 
 ```powershell
-irm https://raw.githubusercontent.com/therajatshahare/cmd-scripts/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/therajatshahare/ps1-scripts-win/main/install.ps1 | iex
 ```
 
 > ⚠️ Restart PowerShell after installation.
