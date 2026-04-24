@@ -4,21 +4,34 @@ param(
 )
 
 # -------------------------------
-# Validate file
+# Get item safely (works for hidden/system)
 # -------------------------------
-if (-not (Test-Path $file)) {
-    Write-Host "File not found: $file"
+$item = Get-Item $file -Force -ErrorAction SilentlyContinue
+
+if (-not $item) {
+    Write-Host "File or folder not found: $file" -ForegroundColor Red
     exit 1
 }
 
 # -------------------------------
-# Apply hidden + system + read-only
+# If folder → hide everything inside
 # -------------------------------
-$item = Get-Item $file
+if ($item.PSIsContainer) {
 
+    Get-ChildItem $file -Recurse -Force | ForEach-Object {
+        $_.Attributes = $_.Attributes `
+            -bor [System.IO.FileAttributes]::Hidden `
+            -bor [System.IO.FileAttributes]::System `
+            -bor [System.IO.FileAttributes]::ReadOnly
+    }
+}
+
+# -------------------------------
+# Hide main item
+# -------------------------------
 $item.Attributes = $item.Attributes `
     -bor [System.IO.FileAttributes]::Hidden `
     -bor [System.IO.FileAttributes]::System `
     -bor [System.IO.FileAttributes]::ReadOnly
 
-Write-Host "File '$file' is now hidden (Hidden + System + ReadOnly)."
+Write-Host "File/folder '$file' is now hidden (Hidden + System + ReadOnly)."
